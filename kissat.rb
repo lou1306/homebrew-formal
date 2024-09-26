@@ -5,6 +5,7 @@ class Kissat < Formula
   sha256 "4b41edf12ffa5f8e8b1986e5ad3e0bedb4d34b0ed3ecc7c13362bc7ba0aba66b"
   license 'MIT'
 
+
   bottle do
     root_url "https://github.com/lou1306/homebrew-formal/releases/download/kissat-4.0.1"
     rebuild 1
