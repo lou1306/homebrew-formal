@@ -1,0 +1,6 @@
+for file in $(git diff --cached --name-only --diff-filter=ACM | grep ".rb$"); do
+  if ! brew audit "lou1306/formal/$(basename $file .rb)"; then
+    echo "Brew audit failed on staged file '$file'. Please fix the errors and try again."
+    exit 1
+  fi
+done
