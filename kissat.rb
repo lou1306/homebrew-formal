@@ -8,7 +8,7 @@ class Kissat < Formula
   bottle do
     root_url "https://github.com/lou1306/homebrew-formal/releases/download/kissat-4.0.1"
     rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sonoma: "913368e477a66cd4101acdca2137f93d1121c35ce9be69884049c75f9d4d5bf2"
+    sha256 arm64_sonoma: "913368e477a66cd4101acdca2137f93d1121c35ce9be69884049c75f9d4d5bf2"
   end
 
   option "with-test", "Run test suite"
