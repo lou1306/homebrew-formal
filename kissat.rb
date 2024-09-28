@@ -9,6 +9,7 @@ class Kissat < Formula
     root_url "https://github.com/lou1306/homebrew-formal/releases/download/kissat-4.0.1"
     rebuild 1
     sha256 arm64_sonoma: "913368e477a66cd4101acdca2137f93d1121c35ce9be69884049c75f9d4d5bf2"
+    sha256 sonoma: "df109c23290084b0c6cb688eeb35f4f925fb9ee57ab1107bdf0937c77b6dea1a"
   end
 
   option "with-test", "Run test suite"
