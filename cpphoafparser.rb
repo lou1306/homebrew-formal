@@ -7,7 +7,7 @@ class Cpphoafparser < Formula
 
   bottle do
     root_url "https://github.com/lou1306/homebrew-formal/releases/download/cpphoafparser-0.99.2"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma: "4fbc23f4963c898121e7f95b0dde64d8338d28f9a0716e086b3b3e259ff0814a"
+    sha256 arm64_sonoma: "4fbc23f4963c898121e7f95b0dde64d8338d28f9a0716e086b3b3e259ff0814a"
   end
 
   def install
