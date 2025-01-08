@@ -6,6 +6,12 @@ class Esbmc < Formula
     revision: "961ffe5a1a11b430edbf809e0acee0c13280dfaa"
   license "Apache-2.0"
 
+  bottle do
+    root_url "https://github.com/lou1306/homebrew-formal/releases/download/esbmc-7.8"
+    rebuild 1
+    sha256 arm64_sonoma: "e599d9373faa7c06e85faf116cd770a41ef872f50f819a6792c2dd5a3ed1bd65"
+  end
+
   depends_on "bison" => :build
   depends_on "boost" => :build
   depends_on "cmake" => :build
