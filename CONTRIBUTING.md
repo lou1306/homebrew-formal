@@ -76,7 +76,7 @@ but they do not seem to jive well with the structure of this tap.)
 
 ## Additional caveats
 
-Please refer to the (Homebrew prose style guidelines)[https://docs.brew.sh/Prose-Style-Guidelines]
+Please refer to the [Homebrew prose style guidelines](https://docs.brew.sh/Prose-Style-Guidelines)
 for style advice regarding prose documentation (e.g., formula descriptions).
 
 For all other contribution ideas, please just open a new issue.

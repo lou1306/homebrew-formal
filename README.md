@@ -8,7 +8,9 @@ Homebrew repository.
 
 Install Homebrew and then execute the following command:
 
-  $ brew tap lou1306/formal
+```
+$ brew tap lou1306/formal
+```
 
 # A note on this fork
 
