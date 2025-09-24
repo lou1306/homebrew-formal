@@ -1,6 +1,5 @@
-require 'formula'
-
 class Picosat < Formula
+  desc "SAT solver and related tools"
   homepage "http://fmv.jku.at/picosat/"
   url "http://fmv.jku.at/picosat/picosat-965.tar.gz"
   sha256 "15169b4f28ba8f628f353f6f75a100845cdef4a2244f101a02b6e5a26e46a754"
