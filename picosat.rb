@@ -1,14 +1,14 @@
 require 'formula'
 
 class Picosat < Formula
-  homepage 'http://fmv.jku.at/picosat/'
-  url 'http://fmv.jku.at/picosat/picosat-960.tar.gz'
-  sha256 'edb3184a04766933b092713d0ae5782e4a3da31498629f8bb2b31234a563e817'
+  homepage "http://fmv.jku.at/picosat/"
+  url "http://fmv.jku.at/picosat/picosat-965.tar.gz"
+  sha256 "15169b4f28ba8f628f353f6f75a100845cdef4a2244f101a02b6e5a26e46a754"
 
   patch :DATA
 
   def install
-    system "./configure -shared"
+    system "./configure.sh", "-shared"
     system "make"
     bin.install "picosat", "picogcnf", "picomcs", "picomus"
     lib.install "libpicosat.a", "libpicosat.dylib"
@@ -18,10 +18,10 @@ end
 
 
 __END__
-diff --git a/configure b/configure
+diff --git a/configure.sh b/configure.sh
 index ca5ec77..fe9e162 100755
---- a/configure
-+++ b/configure
+--- a/configure.sh
++++ b/configure.sh
 @@ -108,7 +108,7 @@ fi
  TARGETS="picosat picomcs picomus picogcnf libpicosat.a"
  if [ $shared = yes ]
