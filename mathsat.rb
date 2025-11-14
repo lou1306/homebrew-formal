@@ -62,25 +62,29 @@ class Mathsat < Formula
       end
       bin.install "mathsatj-compile", "mathsatj-run"
     end
+    puts <<~EOS
+      To compile a Java file Test.java with mathsat, run
+        $ mathsatj-compile Test.java
+
+      To run the class Test.class, run
+        $ mathsatj-run Test
+    EOS
   end
 
   def caveats
-    java_caveats = ""
-    if build.with? "java"
-      java_caveats = <<~EOS
-        To compile a Java file Test.java with mathsat, run
-          $ mathsatj-compile Test.java
-
-        To run the class Test.class, run
-          $ mathsatj-run Test
-        EOS
-    end
     <<~EOS
-      #{java_caveats}
       === LICENSE ===
-      #{Utils.safe_popen_read "cat", "#{HOMEBREW_PREFIX}/share/mathsat/LICENSE.txt"}===============
+      MathSAT5 is copyrighted 2009-2025 by Fondazione Bruno Kessler, Trento, Italy,
+      University of Trento, Italy, and others. All rights reserved.
 
-      The license can be found in #{HOMEBREW_PREFIX}/share/mathsat/LICENSE.txt
+      MathSAT5 is available for research and evaluation purposes only.
+      It can not be used in a commercial environment, particularly as part of a
+      commercial product, without written permission. MathSAT5 is provided as is,
+      without any warranty.
+
+      Please write to mathsat@fbk.eu for additional questions regarding licensing
+      MathSAT5 or obtaining more up-to-date versions.
+      ===============
     EOS
   end
 end
