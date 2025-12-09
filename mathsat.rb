@@ -3,8 +3,8 @@ require "macho"
 class Mathsat < Formula
   desc "Efficient Satisfiability Modulo Theories (SMT) solver"
   homepage "http://mathsat.fbk.eu/index.html"
-  url "https://mathsat.fbk.eu/release/mathsat-5.6.14-macos.tar.gz"
-  sha256 "e839462862dc2abc6975ad84e8cd25a4f854046597d6f73fa7f245ab9ae30b00"
+  url "https://mathsat.fbk.eu/release/mathsat-5.6.15-macos.tar.gz"
+  sha256 "470441be2208ffd57290e81d8ab14119935c1120b8d7a34bc7dbe8b2a4e1cf1c"
   license :cannot_represent
   option "without-java", "Skip building and installation of Java bindings"
 
