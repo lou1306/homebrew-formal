@@ -3,6 +3,7 @@ class Prism < Formula
   homepage "http://www.prismmodelchecker.org"
   url "https://www.prismmodelchecker.org/dl/prism-4.9-src.tar.gz"
   sha256 "a78813114cdb29bf26902edc60d7b0dc58b75fd370c9d04ca672f2a031bc4cd1"
+  license "GPL-2.0-or-later"
   depends_on "openjdk"
 
   def install
