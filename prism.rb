@@ -1,47 +1,49 @@
-require 'formula'
-
 class Prism < Formula
-  homepage 'http://www.prismmodelchecker.org'
-  url 'https://github.com/prismmodelchecker/prism/archive/refs/tags/v4.7.tar.gz'
-  sha256 '16186047ba49efc6532de6e9c3993c8c73841a7c76c99758d6ee769e72092d6d'
-  version '4.7'
-
-  patch :DATA
+  desc "Probabilistic model checker"
+  homepage "http://www.prismmodelchecker.org"
+  url "https://www.prismmodelchecker.org/dl/prism-4.9-src.tar.gz"
+  sha256 "a78813114cdb29bf26902edc60d7b0dc58b75fd370c9d04ca672f2a031bc4cd1"
+  depends_on "openjdk"
 
   def install
+    Dir.chdir "cudd" do
+      inreplace "util/util.h", "#define fail(why)", "#define cuddfail(why)"
+    end
+
     Dir.chdir "prism" do
+      ENV.append_to_cflags("-I#{HOMEBREW_PREFIX}/opt/openjdk/include")
       system "OSTYPE=darwin make release"
+
       Dir.chdir "release" do
         Dir["prism-*.tar.gz"].each do |tgz|
-          system "tar zxf #{tgz}"
+          system "tar", "zxf", tgz
           Dir.chdir tgz.sub(".tar.gz", "") do
             (share/"prism").install Dir["*"]
           end
         end
       end
+      (share/"prism").install "etc/"
     end
-    Dir.chdir "#{share}/prism" do
+    Dir.chdir share/"prism" do
       system "./install.sh"
     end
-    mkdir "#{bin}"
-    ln_s "#{share}/prism/bin/prism", "#{bin}/prism"
-    ln_s "#{share}/prism/bin/xprism", "#{bin}/xprism"
+    bin.install Dir[share/"prism/bin/*"]
+
+    Dir[share/"prism/lib/*.dylib"].each do |dylib|
+      MachO::Tools.dylibs(dylib).each do |dep|
+        next unless dep.start_with?("../../lib/", "bin/osx64")
+
+        MachO::Tools.change_install_name(dylib, dep, dep.sub("../../lib/", "./").sub("bin/osx64/", "./"))
+      end
+    end
+
     ohai "The PRISM package is installed in #{HOMEBREW_PREFIX}/share/prism."
   end
+
+  test do
+    path = share/"prism/etc/tests/"
+    system bin/"prism", path/"dtmc_pctl.prism", path/"dtmc_pctl.prism.props", "-ex", "-test"
+    system bin/"prism", path/"dtmc_pctl.prism", path/"dtmc_pctl.prism.props", "-h", "-test"
+    system bin/"prism", path/"test_lpsolve_mdpmo.prism", path/"test_lpsolve_mdpmo.prism.props", "-lp", "-test"
+  end
 end
-
-__END__
-diff --git a/cudd/util/util.h b/cudd/util/util.h
-index 1914672..eddfeb4 100644
---- a/cudd/util/util.h
-+++ b/cudd/util/util.h
-@@ -166,7 +166,7 @@ extern int memcmp(), strcmp();
- #endif
- 
- 
--#define fail(why) {\
-+#define cuddfail(why) {\
-     (void) fprintf(stderr, "Fatal error: file %s, line %d\n%s\n",\
- 	__FILE__, __LINE__, why);\
-     (void) fflush(stdout);\
-
