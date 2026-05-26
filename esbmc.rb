@@ -1,8 +1,8 @@
 class Esbmc < Formula
   desc "Efficient SMT-based context-bounded model checker"
   homepage "https://esbmc.github.io/"
-  url "https://github.com/esbmc/esbmc/archive/refs/tags/v8.2.tar.gz"
-  sha256 "f28b82e4f54b358f0446976a8717f0aeaa3d219408449bec9b5fe278d262c389"
+  url "https://github.com/esbmc/esbmc/archive/refs/tags/v8.3.tar.gz"
+  sha256 "3898c7bd799fb495c4709a72296805e2123bd23f410aac5038ca2e6e3c33d257"
   license "Apache-2.0"
 
   depends_on "bison" => :build
